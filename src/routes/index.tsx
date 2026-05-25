@@ -170,8 +170,12 @@ function FaqItem({ q, a, open, onClick }: { q: string; a: string; open: boolean;
   );
 }
 
+const WHATSAPP_URL =
+  "https://wa.me/918058816140?text=Hi%20KrishWebStudio,%20I%20am%20interested%20in%20a%20premium%20website%20for%20my%20business.";
+
 function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
