@@ -170,8 +170,12 @@ function FaqItem({ q, a, open, onClick }: { q: string; a: string; open: boolean;
   );
 }
 
+const WHATSAPP_URL =
+  "https://wa.me/918058816140?text=Hi%20KrishWebStudio,%20I%20am%20interested%20in%20a%20premium%20website%20for%20my%20business.";
+
 function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -182,7 +186,9 @@ function Index() {
             Krish<span className="gold-text">WebStudio</span>
           </a>
           <a
-            href="#contact"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
           >
             Contact
@@ -205,7 +211,9 @@ function Index() {
           </p>
           <div className="mt-12 flex justify-center">
             <a
-              href="#contact"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="cta-magnetic gold-glow group inline-flex items-center gap-3 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full text-sm md:text-base tracking-wide"
             >
               Let's Build Your Site
@@ -396,9 +404,9 @@ function Index() {
             Let's turn your vision into a revenue engine. Reach out and we'll get started.
           </p>
           <a
-            href="https://wa.me/"
+            href={WHATSAPP_URL}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="cta-magnetic inline-flex items-center gap-3 border border-primary/50 text-primary px-7 py-3.5 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors text-sm tracking-wide"
           >
             <MessageCircle className="w-4 h-4" />
@@ -409,20 +417,18 @@ function Index() {
 
       {/* FOOTER */}
       <footer className="border-t border-border py-10 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto text-center space-y-2">
-          <p className="font-display text-base text-muted-foreground">
+        <div className="max-w-7xl mx-auto flex flex-col items-center gap-4 text-center">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-primary hover:text-[var(--gold-soft)] transition-colors text-sm tracking-wide"
+          >
+            <MessageCircle className="w-4 h-4" />
+            Chat with us on WhatsApp
+          </a>
+          <p className="font-display text-sm text-muted-foreground">
             © KrishWebStudio. Crafting Premium Web Solutions.
-          </p>
-          <p className="text-xs text-muted-foreground/60">
-            WhatsApp:{" "}
-            <a
-              href="https://wa.me/"
-              className="text-primary hover:underline"
-              target="_blank"
-              rel="noreferrer"
-            >
-              +00 000 000 0000
-            </a>
           </p>
         </div>
       </footer>
