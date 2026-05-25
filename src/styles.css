@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-display: "Syne", "Clash Display", ui-serif, Georgia, serif;
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -81,4 +81,48 @@
     radial-gradient(ellipse at 20% 0%, rgba(212,175,55,0.12), transparent 50%),
     radial-gradient(ellipse at 80% 100%, rgba(212,175,55,0.08), transparent 50%),
     #0B132B;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Premium gold CTA hover */
+.cta-magnetic {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease, background-color 0.3s ease;
+}
+.cta-magnetic:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow:
+    0 0 0 1px rgba(212,175,55,0.7) inset,
+    0 12px 40px rgba(212,175,55,0.45),
+    0 0 80px rgba(212,175,55,0.35);
+}
+
+/* Service card lift + gold shadow */
+.lux-card {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease, box-shadow 0.5s ease;
+}
+.lux-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212,175,55,0.55);
+  box-shadow:
+    0 20px 60px -20px rgba(212,175,55,0.35),
+    0 0 0 1px rgba(212,175,55,0.18) inset;
+}
+
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
 }
