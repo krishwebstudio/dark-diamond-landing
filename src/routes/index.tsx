@@ -30,8 +30,9 @@ export const Route = createFileRoute("/")({
     links: [
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap",
       },
+
     ],
   }),
 });
@@ -182,19 +183,25 @@ function Index() {
       {/* NAV */}
       <header className="absolute top-0 left-0 right-0 z-20">
         <nav className="max-w-7xl mx-auto px-6 md:px-10 py-6 flex items-center justify-between">
-          <a href="#" className="font-display font-semibold text-xl md:text-2xl tracking-tight">
+          <a href="#" className="font-display font-bold text-xl md:text-2xl tracking-tight">
             Krish<span className="gold-text">WebStudio</span>
           </a>
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-          >
-            Contact
-          </a>
+          <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+            <Link to="/projects" className="hover:text-primary transition-colors">
+              Projects
+            </Link>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+            >
+              Contact
+            </a>
+          </div>
         </nav>
       </header>
+
 
       {/* HERO */}
       <section className="hero-radial relative pt-36 pb-28 md:pt-44 md:pb-36 px-6 md:px-10">
