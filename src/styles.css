@@ -89,6 +89,9 @@
     mix-blend-mode: overlay;
   }
   #root, main, header, footer, section { position: relative; z-index: 1; }
+}
+
+
 
 
 @keyframes goldPulse {
