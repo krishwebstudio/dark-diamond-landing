@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "E-Commerce Website",
+    "description": "A fully responsive online store built for a clothing brand.",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500",
+    "link": "https://example.com"
+  },
+  {
+    "id": 2,
+    "title": "Corporate Portfolio",
+    "description": "A premium, dark-themed sleek landing page for a marketing agency.",
+    "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500",
+    "link": "https://example.com"
+  }
+]
