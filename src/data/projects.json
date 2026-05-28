@@ -1,0 +1,18 @@
+[
+  {
+    "id": "luxe-atelier",
+    "title": "Luxe Atelier",
+    "description": "A bespoke e-commerce experience for a luxury fashion atelier — engineered for storytelling, conversion, and frictionless checkout.",
+    "image": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1400&q=80",
+    "tags": ["E-Commerce", "Branding", "Performance"],
+    "link": "https://example.com"
+  },
+  {
+    "id": "horizon-capital",
+    "title": "Horizon Capital",
+    "description": "A premium marketing site for a boutique investment firm with elegant motion, refined typography, and a trust-first layout.",
+    "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80",
+    "tags": ["Finance", "Marketing Site", "Animation"],
+    "link": "https://example.com"
+  }
+]
