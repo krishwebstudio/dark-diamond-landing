@@ -1,7 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
-import { Link } from "@tanstack/react-router";
-import projects from "@/data/projects.json";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
@@ -31,7 +30,30 @@ export const Route = createFileRoute("/projects")({
 const WHATSAPP_URL =
   "https://wa.me/918058816140?text=Hi%20KrishWebStudio,%20I%20am%20interested%20in%20a%20premium%20website%20for%20my%20business.";
 
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+};
+
 function ProjectsPage() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/projects.json")
+      .then((r) => {
+        if (!r.ok) throw new Error("Failed to load projects");
+        return r.json();
+      })
+      .then((data: Project[]) => setProjects(data))
+      .catch((e) => setError(e.message))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* NAV */}
@@ -71,49 +93,49 @@ function ProjectsPage() {
       </section>
 
       <section className="pb-28 md:pb-36 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6 lg:gap-8">
-          {projects.map((p) => (
-            <article
-              key={p.id}
-              className="lux-card group bg-card border border-border rounded-2xl overflow-hidden flex flex-col"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
-              </div>
-              <div className="p-7 md:p-8 flex-1 flex flex-col">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[0.65rem] uppercase tracking-[0.2em] text-primary/90 border border-primary/30 rounded-full px-3 py-1"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <h2 className="font-display font-bold text-2xl md:text-3xl mb-3 leading-tight">
-                  {p.title}
-                </h2>
-                <p className="text-muted-foreground text-[0.95rem] leading-relaxed mb-6 flex-1">
-                  {p.description}
-                </p>
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:text-[var(--gold-soft)] transition-colors text-sm font-medium tracking-wide self-start"
+        <div className="max-w-7xl mx-auto">
+          {loading && (
+            <p className="text-center text-muted-foreground">Loading projects…</p>
+          )}
+          {error && (
+            <p className="text-center text-destructive">Could not load projects: {error}</p>
+          )}
+          {!loading && !error && (
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+              {projects.map((p) => (
+                <article
+                  key={p.id}
+                  className="lux-card group bg-card border border-border rounded-2xl overflow-hidden flex flex-col"
                 >
-                  View Project <ArrowUpRight className="w-4 h-4" />
-                </a>
-              </div>
-            </article>
-          ))}
+                  <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
+                  </div>
+                  <div className="p-7 md:p-8 flex-1 flex flex-col">
+                    <h2 className="font-display font-bold text-2xl md:text-3xl mb-3 leading-tight">
+                      {p.title}
+                    </h2>
+                    <p className="text-muted-foreground text-[0.95rem] leading-relaxed mb-6 flex-1">
+                      {p.description}
+                    </p>
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-primary hover:text-[var(--gold-soft)] transition-colors text-sm font-medium tracking-wide self-start"
+                    >
+                      View Project <ArrowUpRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
