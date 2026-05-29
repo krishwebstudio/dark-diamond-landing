@@ -182,11 +182,15 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* NAV */}
       <header className="absolute top-0 left-0 right-0 z-20">
-        <nav className="max-w-7xl mx-auto px-6 md:px-10 py-6 flex items-center justify-between">
-          <a href="#" className="font-display font-bold text-xl md:text-2xl tracking-tight">
-            Krish<span className="gold-text">WebStudio</span>
-          </a>
-          <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+        <nav className="max-w-7xl mx-auto pl-4 pr-6 md:pl-5 md:pr-10 py-4 flex items-center justify-between">
+          <Link to="/" aria-label="KrishWebStudio — Home" className="flex items-center">
+            <img
+              src={logo}
+              alt="KrishWebStudio logo"
+              className="h-9 w-9 md:h-12 md:w-12 rounded-lg object-cover"
+            />
+          </Link>
+          <div className="flex items-center gap-6 md:gap-8 text-sm text-muted-foreground">
             <Link to="/projects" className="hover:text-primary transition-colors">
               Projects
             </Link>
