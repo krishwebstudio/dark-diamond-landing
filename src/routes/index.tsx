@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import logo from "@/assets/logo-cropped.jpg";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
