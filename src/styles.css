@@ -142,9 +142,28 @@
 
 .hero-radial {
   background:
-    radial-gradient(ellipse at 20% 0%, rgba(212,175,55,0.12), transparent 50%),
-    radial-gradient(ellipse at 80% 100%, rgba(212,175,55,0.08), transparent 50%),
-    #0B132B;
+    radial-gradient(ellipse at 20% 0%, rgba(0,220,255,0.14), transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(180,120,255,0.16), transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.10), transparent 60%),
+    linear-gradient(180deg, #07091e 0%, #0a0c24 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero-radial::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    conic-gradient(from 180deg at 50% 120%,
+      rgba(0,220,255,0.18) 0deg,
+      rgba(180,120,255,0.18) 90deg,
+      rgba(212,175,55,0.18) 180deg,
+      rgba(0,220,255,0.18) 360deg);
+  filter: blur(60px);
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse at 50% 100%, black, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 100%, black, transparent 70%);
 }
 
 /* Scroll reveal */
@@ -160,33 +179,74 @@
   transform: translateY(0);
 }
 
-/* Premium gold CTA hover */
+/* Premium gold CTA hover with neon depth */
 .cta-magnetic {
+  position: relative;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.35s ease, background-color 0.3s ease;
+  box-shadow:
+    0 8px 24px rgba(212,175,55,0.25),
+    0 0 40px rgba(120,80,255,0.15);
 }
 .cta-magnetic:hover {
-  transform: translateY(-2px) scale(1.04);
+  transform: translateY(-3px) scale(1.04);
   box-shadow:
     0 0 0 1px rgba(212,175,55,0.7) inset,
-    0 12px 40px rgba(212,175,55,0.45),
-    0 0 80px rgba(212,175,55,0.35);
+    0 14px 50px rgba(212,175,55,0.5),
+    0 0 90px rgba(0,220,255,0.35);
 }
 
-/* Service card lift + gold shadow */
+/* 3D glassmorphism cards */
 .lux-card {
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.4s ease, box-shadow 0.5s ease;
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%),
+    rgba(15, 20, 45, 0.55) !important;
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(212,175,55,0.18) !important;
+  box-shadow:
+    0 10px 30px -10px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.03) inset,
+    0 1px 0 0 rgba(255,255,255,0.05) inset;
+  transform: perspective(1200px) translateZ(0);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease, box-shadow 0.55s ease;
+  will-change: transform;
+}
+.lux-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    rgba(0,220,255,0.35),
+    rgba(212,175,55,0.25) 50%,
+    rgba(180,120,255,0.35));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
 }
 .lux-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(212,175,55,0.55);
+  transform: perspective(1200px) translateY(-10px) rotateX(2deg) rotateY(-2deg) translateZ(20px);
+  border-color: rgba(212,175,55,0.55) !important;
   box-shadow:
-    0 20px 60px -20px rgba(212,175,55,0.35),
-    0 0 0 1px rgba(212,175,55,0.18) inset;
+    0 30px 80px -20px rgba(0,220,255,0.30),
+    0 20px 60px -20px rgba(212,175,55,0.40),
+    0 0 0 1px rgba(212,175,55,0.25) inset,
+    0 0 60px rgba(180,120,255,0.25);
 }
+.lux-card:hover::before { opacity: 1; }
 
 .gold-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0,220,255,0.4), rgba(212,175,55,0.6), rgba(180,120,255,0.4), transparent);
+  box-shadow: 0 0 12px rgba(212,175,55,0.4);
 }
+
